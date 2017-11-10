@@ -24,7 +24,6 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 
     testCompile "org.jetbrains.spek:spek-api:1.1.5"
-    testCompile "com.natpryce:hamkrest:1.4.2.2"
     testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.1.5'
 }
 
