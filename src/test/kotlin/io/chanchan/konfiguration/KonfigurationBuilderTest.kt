@@ -7,7 +7,7 @@ import org.jetbrains.spek.api.dsl.it
 import java.util.*
 
 class KonfigurationBuilderTest : Spek({
-    describe("can load environment variables") {
+    describe("addSource") {
         val konfigurationBuilder = KonfigurationBuilder()
 
         it("should be able to load a map") {
@@ -15,22 +15,22 @@ class KonfigurationBuilderTest : Spek({
                     "ENV" to "dev"
             )
 
-            val konfiguration = konfigurationBuilder.apply {
+            konfigurationBuilder.apply {
                 addSource(map)
-            }.build()
+            }
 
-            expect(konfiguration["ENV"]).to.equal("dev")
+            expect(konfigurationBuilder.propertiesList["ENV"]).to.equal("dev")
         }
 
         it("should be able to load Properties") {
             val properties = Properties()
             properties.setProperty("ENV", "dev")
 
-            val konfiguration = konfigurationBuilder.apply {
+            konfigurationBuilder.apply {
                 addSource(properties)
-            }.build()
+            }
 
-            expect(konfiguration["ENV"]).to.equal("dev")
+            expect(konfigurationBuilder.propertiesList["ENV"]).to.equal("dev")
         }
     }
 })
